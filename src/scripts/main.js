@@ -10,8 +10,8 @@ document.addEventListener('click', (e) => {
     const spiderHeight = spider.offsetHeight;
 
     const wallStyle = getComputedStyle(wall);
-    const wallBorderRght = parseInt(wallStyle.borderRightWidth);
-    const wallBorderBottom = parseInt(wallStyle.borderBottomWidth);
+    const wallBorderRght = parseInt(wallStyle.borderRightWidth, 20);
+    const wallBorderBottom = parseInt(wallStyle.borderBottomWidth, 20);
 
     let xCoords = e.clientX - wallRect.left;
     let yCoords = e.clientY - wallRect.top;
@@ -20,13 +20,13 @@ document.addEventListener('click', (e) => {
       0,
       Math.min(
         xCoords - spiderWidth / 2,
-        wallRect.width - spiderWidth - wallBorderRght * 2,
+        wallRect.width - spiderWidth - wallBorderRght,
       ),
     );
 
     yCoords = Math.max(
       0,
-      Math.min(yCoords, wallRect.height - spiderHeight - wallBorderBottom * 2),
+      Math.min(yCoords, wallRect.height - spiderHeight - wallBorderBottom),
     );
 
     spider.style.left = `${xCoords}px`;
